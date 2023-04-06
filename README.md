@@ -30,5 +30,3 @@ yarn dev
 
 ## O aplicativo está hospedado na Vercel
 [https://app-marvel-comics.vercel.app/](https://app-marvel-comics.vercel.app/)
-<a href="https://app-marvel-comics.vercel.app/" arget="_blank">https://app-marvel-comics.vercel.app/</a>
-<a href="" target="_blank"></a>
