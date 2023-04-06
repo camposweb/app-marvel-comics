@@ -5,7 +5,7 @@
 Este aplicativo foi desenvolvido através de desafio de um processo seletivo, a proposta foi criar uma tela para listar os quadrinhos da Marvel utilizando a API da Marvel, ao clicar em um card abrirá um modal com detalhes do quadrinho selecionado, no modal foi inserido um mapa utilizando o API do Google Maps, onde foi criado um campo para selecionar o endereço para onde o quadrinho deve ser enviado. Na requisição da API filtrem para buscar somente os quadrinhos lançados na última semana por questões de performance.
 
 ## Tecnologias utilizadas
-----------
+
 ![Reacts](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
@@ -27,3 +27,6 @@ npm run dev
 yarn or yarn install
 yarn dev
 ```
+
+## O aplicativo está hospedado na Vercel
+[https://app-marvel-comics.vercel.app/](https://app-marvel-comics.vercel.app/)

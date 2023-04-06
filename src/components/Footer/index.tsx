@@ -12,7 +12,7 @@ export function Footer() {
         </div>
         <div className="flex justify-center justify-items-center">
           <a
-            href="#"
+            href="https://github.com/camposweb/app-marvel-comics"
             target="_blank"
             className="hover:underline mt-3 rounded-md border border-white text-white hover:text-black hover:bg-white p-2 transition"
           >
