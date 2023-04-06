@@ -1,1 +1,0 @@
-className="grid w-full grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-3 justify-items-center gap-4"

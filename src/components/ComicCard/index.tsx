@@ -1,14 +1,19 @@
 import { Transition, Dialog } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-
-/* interface PricesProps {
-  type: 'printPrice'
-  price: number
-} */
-
+import { Fragment, Suspense, useState } from 'react'
+import { X } from '@phosphor-icons/react'
+import { format, parseISO } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+import { Form } from '../Form'
+import { MapComponent } from '../MapComponent'
 export interface CardType {
   id: number
   title: string
+  pageCount: number
+  dates: [
+    {
+      date: string
+    },
+  ]
   thumbnail: {
     path: string
     extension: string
@@ -20,13 +25,23 @@ export interface CardType {
     },
   ]
 }
-
 export interface CardProps {
-  card: CardType
+  cards: CardType
 }
 
-export function ComicCard({ card }: CardProps) {
-  const cardImgUrl = `${card.thumbnail.extension}/portrait_fantastic.${card.thumbnail.path}`
+export function ComicCard({ cards }: CardProps) {
+  const cardImgUrl = `${cards.thumbnail.path}/portrait_fantastic.${cards.thumbnail.extension}`
+  const cardImgModal = `${cards.thumbnail.path}/portrait_uncanny.${cards.thumbnail.extension}`
+
+  const dateformat = parseISO(cards.dates[0].date)
+  const datePublisehAt = format(dateformat, "dd 'de' MMMM 'de' yyyy", {
+    locale: ptBR,
+  })
+
+  const optionFormatPrice = { style: 'currency', currency: 'USD' }
+  const formatPrice = new Intl.NumberFormat('en-US', optionFormatPrice)
+  const price = formatPrice.format(cards.prices[0].price)
+
   const [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -39,19 +54,17 @@ export function ComicCard({ card }: CardProps) {
 
   return (
     <>
-      <div className="w-64 flex flex-col items-center justify-center py-4 gap-y-4 rounded-lg shadow-sm shadow-gray-800">
+      <div className="w-64 flex flex-col items-center justify-center p-4 gap-y-4 rounded-lg shadow-sm shadow-gray-800">
         <div>
-          <h1 className="font-roboto font-bold text-xl text-black">
-            {card.title}
+          <h1 className="font-roboto font-bold text-xl text-black text-center">
+            {cards.title}
           </h1>
         </div>
         <div>
-          <img src={cardImgUrl} alt="" className="w-[168px]" />
+          <img className="w-[168px]" src={cardImgUrl} alt={cards.title} />
         </div>
         <div>
-          <p className="font-roboto font-normal text-xl">
-            {card.prices[0].price}
-          </p>
+          <p className="font-roboto font-normal text-xl">{price}</p>
         </div>
         <div>
           <button
@@ -90,27 +103,55 @@ export function ComicCard({ card }: CardProps) {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
-                  >
-                    Payment successful
-                  </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
-                    </p>
-                  </div>
+                  <div className="flex justify-between max-sm:flex-col gap-x-8">
+                    <div className="max-sm:m-auto max-sm:justify-center">
+                        <img
+                          src={cardImgModal}
+                          alt=""
+                          className="max-sm:w-[168px]"
+                        />
+                    </div>
 
-                  <div className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Got it, thanks!
-                    </button>
+                    <div className="flex-1">
+                      <Dialog.Title
+                        as="h1"
+                        className="font-roboto text-2xl font-bold leading-6 text-gray-900"
+                      >
+                        {cards.title}
+                      </Dialog.Title>
+                      <div className="flex flex-col mt-4 gap-2">
+                        <div className="">
+                          <h3 className="font-roboto text-lg font-bold text-black">
+                            Publicado:
+                          </h3>
+                          <p className="font-roboto text-base font-normal text-black">
+                            {datePublisehAt}
+                          </p>
+                        </div>
+                        <div>
+                          <h3 className="font-roboto text-lg font-bold text-black">
+                            Páginas:
+                          </h3>
+                          <p className="font-roboto text-base font-normal text-black">
+                            {cards.pageCount}
+                          </p>
+                        </div>
+                        <div>
+                          <h3 className="font-roboto text-lg font-bold text-black">
+                            Preço:
+                          </h3>
+                          <p className="font-roboto text-base font-normal text-black">
+                            {price}
+                          </p>
+                        </div>
+                      </div>
+                      <MapComponent modal={isOpen} />
+                    </div>
+                    <div className="max-sm:hidden">
+                      <button type="button" className="" onClick={closeModal}>
+                        <X size={34} />
+                      </button>
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
