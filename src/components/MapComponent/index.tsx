@@ -26,7 +26,7 @@ export function MapComponent({ modal }: modalProps) {
   return (
     <div className="flex w-full h-[350px] mt-4 z-0">
       <GoogleMapsProvider
-        googleMapsAPIKey={import.meta.env.VITE_API_MAPS_KEY}
+        googleMapsAPIKey={import.meta.env.VITE_VERCEL_ENV_API_MAPS_KEY}
         mapContainer={mapContainer}
         mapOptions={mapOptions}
         libraries={["places"]}
