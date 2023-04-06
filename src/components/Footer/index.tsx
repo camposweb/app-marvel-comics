@@ -11,7 +11,11 @@ export function Footer() {
           </h1>
         </div>
         <div className="flex justify-center justify-items-center">
-          <a href="#" target="_blank" className="hover:underline mt-3 rounded-md border border-white text-white hover:text-black hover:bg-white p-2">
+          <a
+            href="#"
+            target="_blank"
+            className="hover:underline mt-3 rounded-md border border-white text-white hover:text-black hover:bg-white p-2 transition"
+          >
             <GithubLogo size={25} weight="fill" />
           </a>
         </div>

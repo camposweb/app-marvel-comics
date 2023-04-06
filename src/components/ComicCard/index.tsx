@@ -1,9 +1,8 @@
 import { Transition, Dialog } from '@headlessui/react'
-import { Fragment, Suspense, useState } from 'react'
-import { X } from '@phosphor-icons/react'
+import { Fragment, useState } from 'react'
+import { Info, X } from '@phosphor-icons/react'
 import { format, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
-import { Form } from '../Form'
 import { MapComponent } from '../MapComponent'
 export interface CardType {
   id: number
@@ -70,7 +69,7 @@ export function ComicCard({ cards }: CardProps) {
           <button
             type="button"
             onClick={openModal}
-            className="border-2 border-black rounded-md p-2 hover:text-white hover:bg-black font-roboto font-bold"
+            className="flex border-2 border-black rounded-md p-2 hover:text-white hover:bg-black font-roboto font-bold"
           >
             Mais informações
           </button>
