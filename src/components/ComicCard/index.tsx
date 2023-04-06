@@ -69,7 +69,7 @@ export function ComicCard({ cards }: CardProps) {
           <button
             type="button"
             onClick={openModal}
-            className="flex border-2 border-black rounded-md p-2 hover:text-white hover:bg-black font-roboto font-bold"
+            className="flex border-2 border-black rounded-md p-2 hover:text-white hover:bg-black font-roboto font-bold transition"
           >
             Mais informações
           </button>
@@ -146,9 +146,10 @@ export function ComicCard({ cards }: CardProps) {
                       </div>
                       <MapComponent modal={isOpen} />
                     </div>
-                    <div className="max-sm:hidden">
-                      <button type="button" className="" onClick={closeModal}>
-                        <X size={34} />
+                    <div className="max-sm:justify-center">
+                      <button type="button" className="max-sm:flex max-sm:w-full" onClick={closeModal}>
+                        <X size={34} className="max-sm:hidden"/> 
+                        <span className="flex w-full justify-center justify-items-center font-roboto text-base font-bold sm:hidden md:hidden lg:hidden border-2 rounded-md border-black hover:text-white hover:bg-black mt-4 p-2 transition">Fechar</span>
                       </button>
                     </div>
                   </div>
