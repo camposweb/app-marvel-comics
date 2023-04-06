@@ -2,9 +2,7 @@
 
 # Aplicativo Marvel
 
-Este aplicativo foi desenvolvido através de desafio de um processo seletivo, 
-
-
+Este aplicativo foi desenvolvido através de desafio de um processo seletivo, a proposta foi criar uma tela para listar os quadrinhos da Marvel utilizando a API da Marvel, ao clicar em um card abrirá um modal com detalhes do quadrinho selecionado, no modal foi inserido um mapa utilizando o API do Google Maps, onde foi criado um campo para selecionar o endereço para onde o quadrinho deve ser enviado. Na requisição da API filtrem para buscar somente os quadrinhos lançados na última semana por questões de performance.
 
 ## Tecnologias utilizadas
 ----------
