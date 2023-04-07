@@ -7,7 +7,6 @@ Este aplicativo foi desenvolvido através de desafio de um processo seletivo, a 
 ## Tecnologias utilizadas
 
 ![Reacts](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 
